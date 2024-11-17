@@ -59,3 +59,11 @@ services:
       - "5173:5173"  # Same port, no conflict as only one runs at a time
     command: pnpm run dev --host 0.0.0.0
     profiles: ["development", "default"]  # Make development the default profile
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
